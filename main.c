@@ -49,13 +49,8 @@ int main() {
     // filter(size_of_image, image);
     
 
-    dark_lines_filter(size_of_image, image);
-    stbi_write_png("dark_lines_filter.png", width, height, channels, image, width * channels);
-    broken_screen_filter(size_of_image, image);
-    stbi_write_png("broken_screen_filter.png", width, height, channels, image, width * channels);
-
-
-
+    brighter_filter(size_of_image, image);
+    stbi_write_png("brighter_filter.png", width, height, channels, image, width * channels);
 
 
     // stbi_write_png("sky.jpg", width, height, channels, image, width * channels);

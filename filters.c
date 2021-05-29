@@ -57,4 +57,19 @@ void broken_screen_filter(size_t size_of_image, unsigned char *image) {
     return;
 }
 
+// reduced opacity filter
+void reduced_opacity_filter(size_t size_of_image, unsigned char *image) {
+    for (long i=0; i<size_of_image; i++) {
+        image[i] = image[i] / 3;
+    }
 
+    return;
+}
+
+// brighter_filter
+void brighter_filter(size_t size_of_image, unsigned char *image) {
+    for (long i=0; i<size_of_image; i++) {
+        image[i] = image[i] * 3;
+        if (image[i] >255) image[i] = 255;
+    }
+}
