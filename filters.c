@@ -4,7 +4,7 @@
 #include <stdbool.h>
 
 // dark lines
-void dark_lines_filter(size_t size_of_image, unsigned char *image) {
+void increase_shade_filter(size_t size_of_image, unsigned char *image) {
     for (long i=0; i<size_of_image; i+=9) {
         image[i] = 0;
     }
@@ -59,7 +59,7 @@ void broken_screen_filter(size_t size_of_image, unsigned char *image) {
 
 // reduced opacity filter
 void reduced_opacity_filter(size_t size_of_image, unsigned char *image, int opacity_level) {
-    if (1 > opacity_level && opacity_level > 255) {
+    if (1 > opacity_level || opacity_level > 255) {
         printf("opacity level out of range of [1, 255]");
         return;
     }
@@ -79,7 +79,15 @@ void brighter_filter(size_t size_of_image, unsigned char *image) {
     }
 }
 
-void dark_lines_filter(size_t size_of_image, unsigned char *image);
+// grayscale filter
+void greyscale_filter(size_t size_of_image, unsigned char *image) {
+    
+}
+
+// works well
+void increase_shade_filter(size_t size_of_image, unsigned char *image);
+
+// doesnt work well
 void red_filter(size_t size_of_image, unsigned char *image);
 void empty_filter(size_t size_of_image, unsigned char *image);
 void green_filter(size_t size_of_image, unsigned char *image);

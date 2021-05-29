@@ -36,6 +36,7 @@ int main() {
            "7. Reduced opacity filter\n" \
            "8. Dark lines filter\n" \
            "9. Exit program\n"
+           "10. Grey Filter\n"
            "Select a number: ");
     scanf("%d", &choice);
     getchar();
@@ -48,7 +49,7 @@ int main() {
     while (repeat) {
         switch (choice) {
             case 1:
-                dark_lines_filter(size_of_image, image);
+                increase_shade_filter(size_of_image, image);
                 repeat = false;
                 break;
             case 2:
@@ -84,7 +85,12 @@ int main() {
                 break;
             case 9:
                 exit = true;
+                repeat = false;
                 break;
+            case 10:
+                repeat = false;
+                exit = true;
+                greyscale_filter(size_of_image, image);
             default:
                 printf("Incorrect input.\n");
                 repeat = true;
