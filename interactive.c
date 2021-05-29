@@ -35,6 +35,7 @@ int main() {
            "6. Broken screen filter\n" \
            "7. Reduced opacity filter\n" \
            "8. Dark lines filter\n" \
+           "9. Exit program\n"
            "Select a number: ");
     scanf("%d", &choice);
     getchar();
@@ -43,6 +44,7 @@ int main() {
 
     int opacity_level;
     bool repeat = true;
+    bool exit = false;
     while (repeat) {
         switch (choice) {
             case 1:
@@ -80,6 +82,9 @@ int main() {
                 brighter_filter(size_of_image, image);
                 repeat = false;
                 break;
+            case 9:
+                exit = true;
+                break;
             default:
                 printf("Incorrect input.\n");
                 repeat = true;
@@ -87,6 +92,8 @@ int main() {
         }
     }
 
+    if (exit) return 1;
+    stbi_write_png("output_file.png", width, height, channels, image, width * channels);
     stbi_image_free(image);
     return 0;
 }
