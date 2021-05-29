@@ -8,6 +8,8 @@
 #define STB_IMAGE_WRITE_IMPLEMENTATION
 #include "stb_image/stb_image_write.h"
 
+#include "filters.c"
+
 int main() {
     int width, height, channels;
     unsigned char *image = stbi_load("sky.png", &width, &height, &channels, 0);
@@ -18,23 +20,7 @@ int main() {
 
     printf("Loaded Image with a width of %dpx, a height of %dpx and %d channels.\n", width, height, channels);
 
-    size_t image_size = width * height * channels;
-
-    // dark filter
-    // for (long i=0; i<image_size-9; i+=9) {
-    //     int one = image[i];
-    //     int two = image[i+1];
-    //     int three = image[i+2];
-    //     int four = image[i+2];
-    //     int five = image[i+2];
-    //     int six = image[i+2];
-    //     int seven = image[i+2];
-    //     int eight = image[i+2];
-    //     int nine = image[i+2];
-    //     int ten = image[i+2];
-    //     int average = (one + two + three + four + five + six + seven + eight + nine + ten) / 10;
-    //     image[i] = 0;
-    // }
+    size_t size_of_image = width * height * channels;
 
     // greyish and slighly blurrier
     // for (long i=0; i<image_size-9; i+=9) {
@@ -60,7 +46,18 @@ int main() {
     //     image[i+8] = average;
     // }
 
-    stbi_write_png("sky2.png", width, height, channels, image, width * channels);
+    // filter(size_of_image, image);
+    
+
+    dark_lines_filter(size_of_image, image);
+    stbi_write_png("dark_lines_filter.png", width, height, channels, image, width * channels);
+    broken_screen_filter(size_of_image, image);
+    stbi_write_png("broken_screen_filter.png", width, height, channels, image, width * channels);
+
+
+
+
+
     // stbi_write_png("sky.jpg", width, height, channels, image, width * channels);
     // stbi_write_png("sky2.jpg", width, height, channels, image, width * channels);
 
