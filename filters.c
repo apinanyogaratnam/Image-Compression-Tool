@@ -65,7 +65,7 @@ void reduced_opacity_filter(size_t size_of_image, unsigned char *image, int opac
     }
 
     for (long i=0; i<size_of_image; i++) {
-        image[i] = image[i] / 3;
+        image[i] = image[i] / opacity_level;
     }
 
     return;

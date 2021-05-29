@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 
 # define STB_IMAGE_IMPLEMENTATION
 #include "stb_image/stb_image.h"
@@ -17,6 +18,8 @@ int main() {
 
     int width, height, channels;
     unsigned char *image = stbi_load(filename, &width, &height, &channels, 0);
+    size_t size_of_image = width * height * channels;
+    
     if (!image) {
         printf("Invalid image name or unable to load image.\n");
         return 1;
@@ -34,8 +37,55 @@ int main() {
            "8. Dark lines filter\n" \
            "Select a number: ");
     scanf("%d", &choice);
+    getchar();
 
     printf("selected: %d\n", choice);
+
+    int opacity_level;
+    bool repeat = true;
+    while (repeat) {
+        switch (choice) {
+            case 1:
+                dark_lines_filter(size_of_image, image);
+                repeat = false;
+                break;
+            case 2:
+                red_filter(size_of_image, image);
+                repeat = false;
+                break;
+            case 3:
+                empty_filter(size_of_image, image);
+                repeat = false;
+                break;
+            case 4:
+                green_filter(size_of_image, image);
+                repeat = false;
+                break;
+            case 5:
+                blue_turquise_filter(size_of_image, image);
+                repeat = false;
+                break;
+            case 6:
+                broken_screen_filter(size_of_image, image);
+                repeat = false;
+                break;
+            case 7:
+                printf("Enter opacity level: ");
+                scanf("%d", &opacity_level);
+                getchar();
+                reduced_opacity_filter(size_of_image, image, opacity_level);
+                repeat = false;
+                break;
+            case 8:
+                brighter_filter(size_of_image, image);
+                repeat = false;
+                break;
+            default:
+                printf("Incorrect input.\n");
+                repeat = true;
+                break;
+        }
+    }
 
     stbi_image_free(image);
     return 0;
