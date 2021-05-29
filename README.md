@@ -24,3 +24,6 @@ look applied to a sample image.
 
 ## Libraries:
 #### https://github.com/nothings/stb.git
+
+
+organize files into a directory like automate_git project
