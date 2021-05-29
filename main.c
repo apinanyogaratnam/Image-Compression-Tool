@@ -18,7 +18,7 @@ int main() {
         return 1;
     }
 
-    printf("Loaded Image with a width of %dpx, a height of %dpx and %d channels.\n", width, height, channels);
+    // printf("Loaded Image with a width of %dpx, a height of %dpx and %d channels.\n", width, height, channels);
 
     size_t size_of_image = width * height * channels;
 
@@ -49,8 +49,8 @@ int main() {
     // filter(size_of_image, image);
     
 
-    brighter_filter(size_of_image, image);
-    stbi_write_png("brighter_filter.png", width, height, channels, image, width * channels);
+    filter(size_of_image, image);
+    stbi_write_png("opaque_test.png", width, height, channels, image, width * channels);
 
 
     // stbi_write_png("sky.jpg", width, height, channels, image, width * channels);
