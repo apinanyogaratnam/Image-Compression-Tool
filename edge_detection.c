@@ -29,66 +29,64 @@ double calculate_hyp(double a, double b) {
 double convolve(unsigned char inp[1580*2][950*2], int px, int py,
                 double kernel[K_SIZE][K_SIZE], int width, int height)
 {
-  int temp = px;
-  px = py;
-  py = temp;
   int current_x;
   int current_y;
   double sum = 0.0;
+  printf("Here\n");
   // check up is_valid then multiply if so
-  current_x = px-1;
-  current_y = py;
-  if (is_valid(current_x, current_y, width, height)) {
-      sum += inp[current_x][current_y] * kernel[0][1];
-  }
-  // check down is_valid then multiply if so
-  current_x = px+1;
-  current_y = py;
-  if (is_valid(current_x, current_y, width, height)) {
-      sum += inp[current_x][current_y] * kernel[2][1];
-  }
-  // check left is_valid then multiply if so
-  current_x = px;
-  current_y = py-1;
-  if (is_valid(current_x, current_y, width, height)) {
-      sum += inp[current_x][current_y] * kernel[1][0];
-  }
-  // check right is_valid then multiply if so
-  current_x = px;
-  current_y = py+1;
-  if (is_valid(current_x, current_y, width, height)) {
-      sum += inp[current_x][current_y] * kernel[1][2];
-  }
-  // check left up is_valid then multiply if so
-  current_x = px-1;
-  current_y = py-1;
-  if (is_valid(current_x, current_y, width, height)) {
-      sum += inp[current_x][current_y] * kernel[0][0];
-  }
-  // check left down is_valid then multiply if so
-  current_x = px+1;
-  current_y = py-1;
-  if (is_valid(current_x, current_y, width, height)) {
-      sum += inp[current_x][current_y] * kernel[2][0];
-  }
-  // check right up is_valid then multiply if so
-  current_x = px-1;
-  current_y = py+1;
-  if (is_valid(current_x, current_y, width, height)) {
-      sum += inp[current_x][current_y] * kernel[0][2];
-  }
-  // check right down is_valid then multiply if so
-  current_x = px+1;
-  current_y = py+1;
-  if (is_valid(current_x, current_y, width, height)) {
-      sum += inp[current_x][current_y] * kernel[2][2];
-  }
-  // check center is_valid then multiply if so
-  current_x = px;
-  current_y = py;
-  if (is_valid(current_x, current_y, width, height)) {
-      sum += inp[current_x][current_y] * kernel[1][1];
-  }
+//   current_x = px-1;
+//   current_y = py;
+//   if (is_valid(current_x, current_y, width, height)) {
+//       sum += inp[current_x][current_y] * kernel[0][1];
+//   }
+//   // check down is_valid then multiply if so
+//   current_x = px+1;
+//   current_y = py;
+//   if (is_valid(current_x, current_y, width, height)) {
+//       sum += inp[current_x][current_y] * kernel[2][1];
+//   }
+//   // check left is_valid then multiply if so
+//   current_x = px;
+//   current_y = py-1;
+//   if (is_valid(current_x, current_y, width, height)) {
+//       sum += inp[current_x][current_y] * kernel[1][0];
+//   }
+//   // check right is_valid then multiply if so
+//   current_x = px;
+//   current_y = py+1;
+//   if (is_valid(current_x, current_y, width, height)) {
+//       sum += inp[current_x][current_y] * kernel[1][2];
+//   }
+//   // check left up is_valid then multiply if so
+//   current_x = px-1;
+//   current_y = py-1;
+//   if (is_valid(current_x, current_y, width, height)) {
+//       sum += inp[current_x][current_y] * kernel[0][0];
+//   }
+//   // check left down is_valid then multiply if so
+//   current_x = px+1;
+//   current_y = py-1;
+//   if (is_valid(current_x, current_y, width, height)) {
+//       sum += inp[current_x][current_y] * kernel[2][0];
+//   }
+//   // check right up is_valid then multiply if so
+//   current_x = px-1;
+//   current_y = py+1;
+//   if (is_valid(current_x, current_y, width, height)) {
+//       sum += inp[current_x][current_y] * kernel[0][2];
+//   }
+//   // check right down is_valid then multiply if so
+//   current_x = px+1;
+//   current_y = py+1;
+//   if (is_valid(current_x, current_y, width, height)) {
+//       sum += inp[current_x][current_y] * kernel[2][2];
+//   }
+//   // check center is_valid then multiply if so
+//   current_x = px;
+//   current_y = py;
+//   if (is_valid(current_x, current_y, width, height)) {
+//       sum += inp[current_x][current_y] * kernel[1][1];
+//   }
   return sum; // Return with the correct value
 }
 

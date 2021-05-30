@@ -15,41 +15,66 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void writePGM(const char *filename, unsigned char *data, int SIZEX, int SIZEY) {
+  /**
+   * Output a PGM image given the pixel data at the given filename. If the file
+   * already exists it will be overwritten. The image array should be of size
+   * SIZEY x SIZEX
+   */
+
+  FILE *f = fopen(filename, "wb");
+  if (f != NULL) {
+    // Write the header for the PGM file
+    fprintf(f, "P5\n%d %d\n255\n", SIZEX, SIZEY);
+    // Write the pixel data to the file
+    fwrite(data, SIZEX * SIZEY * sizeof(unsigned char), 1, f);
+    fclose(f);
+  }
+}
+
+void readPGM(const char *filename, unsigned char *data, int SIZEX, int SIZEY) {
+  /**
+   * Read in a PGM file with a given file name, and return the pixel data
+   * array (data) only if the input image size matches sx and sy.
+   */
+
+  char buffer[1024];
+  int sx, sy;
+
+  FILE *f = fopen(filename, "rb+");
+  if (f == NULL) {
+    printf("Unable to open %s. Make sure the path is correct\n", filename);
+    exit(1);
+  }
+  fgets(buffer, 1024, f);
+  if (strcmp(buffer, "P5\n")) {
+    printf("%s is not a valid input PGM file.\n", filename);
+    fclose(f);
+    exit(1);
+  }
+  // Skip over comments
+  do {
+    fgets(buffer, 1024, f);
+  } while (buffer[0] == '#');
+  // Read the file size from the image into sx and sy
+  sscanf(buffer, "%d %d\n", &sx, &sy);
+  if (sx != SIZEX || sy != SIZEY) {
+    printf("PGM image does not match expected size.\n");
+    fclose(f);
+    exit(1);
+  }
+  // Read the remaining header line
+  fgets(buffer, 1024, f); 
+  // Read the image data into the given array.
+  fread(data, sx * sy * sizeof(unsigned char), 1, f);
+  fclose(f);
+  return;
+}
 
 int main() {
-    int width, height, channels;
-    unsigned char *image = stbi_load("sky.png", &width, &height, &channels, 0);
-    if (!image) {
-        printf("Image failed to load.\n");
-        return 1;
-    }
+    unsigned char data[3024][4032];
+    unsigned char edge[3024][4032];
 
-    printf("Loaded Image with a width of %dpx, a height of %dpx and %d channels.\n", width, height, channels);
-    size_t size_of_image = width * height * channels;
-
-
-
-    unsigned char image_test[width*2][height*2];
-
-    long count = 0;
-    for (long i=0; i<width*2; i++) {
-        for (long j=0; j<height*2; j++) {
-            image_test[i][j] = image[count];
-            count++;
-        }
-    }
-
-    //unsigned char image_data[width*2][height*2];
-    unsigned char image_edge[width*(channels/2)][height*(channels/2)];
-    double resolution = convolve(image_test, 0, 0, GY, width, height);
-    // sobel(image_test, image_edge, width, height);
-    
-    stbi_write_png("output.png", width, height, channels, image_test, width * channels);
-
-
-    // stbi_write_png("sky.jpg", width, height, channels, image, width * channels);
-    // stbi_write_png("sky2.jpg", width, height, channels, image, width * channels);
-
-    stbi_image_free(image);
-    return 0;
+    readPGM("apishan.jpg", &data[0][0], 3024, 4032);
+    writePGM("output.png", &data[0][0], 3024, 4032);
 }
