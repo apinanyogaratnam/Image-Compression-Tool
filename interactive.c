@@ -90,7 +90,7 @@ int main() {
             case 10:
                 repeat = false;
                 exit = true;
-                greyscale_filter(size_of_image, image);
+                greyscale_filter(size_of_image, width, height, channels, image);
             default:
                 printf("Incorrect input.\n");
                 repeat = true;

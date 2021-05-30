@@ -80,8 +80,19 @@ void brighter_filter(size_t size_of_image, unsigned char *image) {
 }
 
 // grayscale filter
-void greyscale_filter(size_t size_of_image, unsigned char *image) {
+void greyscale_filter(size_t size_of_image, int width, int height, int channels, unsigned char *image) {
+    unsigned char image_test[width*2][height*2];
+
+    long count = 0;
+    for (long i=0; i<width*2; i++) {
+        for (long j=0; j<height*2; j++) {
+            image_test[i][j] = image[count];
+            count++;
+        }
+    }
+
     
+    stbi_write_png("output.png", width, height, channels, image_test, width * channels);
 }
 
 // works well
