@@ -94,15 +94,15 @@ double convolve(unsigned char inp[1580*2][950*2], int px, int py,
 
 void sobel(unsigned char inp[1580*2][950*2], unsigned char out[1580*2][950*2], int width, int height)
 {
-    printf("Here\n");
-  for (int i=0; i<width*2; i++) {
-      for (int j=0; j<height*2; j++) {
-          double g_x = convolve(inp, i, j, GX, width, height);
-          double g_y = convolve(inp, i, j, GY, width, height);
-          int colour = calculate_hyp(g_x, g_y);
-          if (colour > 255) colour = 255;
-          out[j][i] = colour;
-      }
-  }
+//     printf("Here\n");
+//   for (int i=0; i<width*2; i++) {
+//       for (int j=0; j<height*2; j++) {
+//           double g_x = convolve(inp, i, j, GX, width, height);
+//           double g_y = convolve(inp, i, j, GY, width, height);
+//           int colour = calculate_hyp(g_x, g_y);
+//           if (colour > 255) colour = 255;
+//           out[j][i] = colour;
+//       }
+//   }
   return; // Update `out` before returning
 }
