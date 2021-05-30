@@ -91,7 +91,7 @@ void greyscale_filter(size_t size_of_image, int width, int height, int channels,
         }
     }
 
-    
+
     stbi_write_png("output.png", width, height, channels, image_test, width * channels);
 }
 

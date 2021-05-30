@@ -45,22 +45,6 @@ double calculate_hyp(double a, double b) {
 double convolve(unsigned char inp[SIZEX][SIZEY], int px, int py,
                 double kernel[K_SIZE][K_SIZE])
 {
-  /**
-   * Perform the convolution of the given kernel and the image with (px, py) as
-   * the center pixel. In essense, the center of the kernel is placed at the
-   * given pixel, and you compute weighted sum (refer to tha handout for an
-   * example) and return it.
-   *
-   * If (px, py) is one of the pixels at the edge of the screen (and thus part
-   * of the kernel is leaking outside the image), you may assume that those
-   * pixels are black. In other words, you should pretend that all pixels
-   * outside the image are just black for the sake of computation.
-   *
-   * Note: In this case, the weighted sum is also an integer because of GX and
-   *       GY. However, in general the kernels can have floating point values,
-   *       so doing it this way will let you generalize your solution much more
-   *       easily if you wish to do so.
-   */
   int temp = px;
   px = py;
   py = temp;
@@ -126,20 +110,6 @@ double convolve(unsigned char inp[SIZEX][SIZEY], int px, int py,
 
 void sobel(unsigned char inp[SIZEX][SIZEY], unsigned char out[SIZEX][SIZEY])
 {
-  /**
-   * Given an input image, perform the Sobel edge detection algorithm and store
-   * the output in `out`.  Remember that this boils down to:
-   *
-   * for pixel in input:
-   *    g_x = convolve GX at pixel
-   *    g_y = convolve GY at pixel
-   *    set corresponding output pixel to sqrt(g_x^2 + g_y^2)
-   *
-   * Note: The expression sqrt(g_x^2 + g_y^2) may result in values greater than
-   *       255. If the value is greater, just set it equal to 255. Round down
-   *       in case of floating point values.
-   */
-
   for (int i=0; i<SIZEX; i++) {
       for (int j=0; j<SIZEY; j++) {
           double g_x = convolve(inp, i, j, GX);

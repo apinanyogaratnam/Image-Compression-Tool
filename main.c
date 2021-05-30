@@ -9,6 +9,12 @@
 #include "stb_image/stb_image_write.h"
 
 #include "filters.c"
+#include "edge_detection.c"
+
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+
 
 int main() {
     int width, height, channels;
@@ -32,10 +38,14 @@ int main() {
             count++;
         }
     }
+
+    //unsigned char image_data[width*2][height*2];
+    unsigned char image_edge[width*(channels/2)][height*(channels/2)];
+    double resolution = convolve(image_test, 0, 0, GY, width, height);
+    printf("Here\n");
+    // sobel(image_test, image_edge, width, height);
     
     stbi_write_png("output.png", width, height, channels, image_test, width * channels);
-
-
 
 
     // stbi_write_png("sky.jpg", width, height, channels, image, width * channels);
