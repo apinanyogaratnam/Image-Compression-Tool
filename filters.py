@@ -203,3 +203,5 @@ def crop(image, upper_left_coordinates, bottom_right_coordinates):
             draw.point((x, y), pixels[x_pixel, y_pixel])
 
     footer_without_data(output_image, "cropped_image")
+
+# https://www.codingame.com/playgrounds/2524/basic-image-manipulation/filtering
