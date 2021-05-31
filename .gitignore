@@ -1,6 +1,7 @@
-# /automate_git
+/automate_git
 /stb
 /stb_image
 /Ex7
 /garbage_collector
 /__pycache__
+/.DS_Store
