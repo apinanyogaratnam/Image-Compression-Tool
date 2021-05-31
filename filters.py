@@ -90,7 +90,7 @@ def reduce_opacity_filter(image, opacity_level):
 def blur_filter(image):
     size_of_image = image.size
     width = size_of_image[0]
-    image_data = list(image.getdata())
+    image_data = get_iamge_data(image)
 
     data = []
     for i in range(len(image_data)):
@@ -108,3 +108,24 @@ def blur_filter(image):
 # results:
     # 3x3: caused paleness
     # 4x4 caused brightness
+
+
+def blur_modular_filter(image, n_dimension):
+    size_of_image = image.size
+    width = size_of_image[0]
+    image_data = get_image_data(image)
+    length_of_image_data = len(image_data)
+
+    data = []
+    for i in range(length_of_image_data):
+        if (n_dimension * n_dimension > length_of_image_data-1): break
+
+        list_of_tuples = []
+        for j in range(i, i+(n_dimension * n_dimension + 1)):
+            # need to use width
+            list_of_tuples.append(image_data[j])
+
+        average_tuple = get_average_tuple(list_of_tuples)
+        data.append(average_tuple)
+
+    footer(image, data, "blue_alternate_filter")
