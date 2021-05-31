@@ -3,9 +3,8 @@ from PIL import Image, ImageFilter
 from filters import *
 
 filename = "apishan.jpg"
-filename = "sky.jpg"
 image = Image.open(filename)
 image = image.convert('RGB')
 
 
-luminosity(image, 80)
+contrast(image)

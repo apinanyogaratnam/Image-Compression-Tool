@@ -172,6 +172,7 @@ def contrast(image):
         current_tuple = list(image_data[i])
         avg = (current_tuple[0] + current_tuple[1] + current_tuple[2]) / 3
 
+        if (avg == 0): continue
         # new luminosity
         new = 255 * (avg - contrast_min) / (contrast_max - contrast_min)
         current_tuple[0] = int(current_tuple[0] * new / avg)
