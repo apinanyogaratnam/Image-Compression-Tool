@@ -42,3 +42,10 @@ def get_average_tuple(list_of_tuples):
 
 def get_image_data(image):
     return list(image.getdata())
+
+
+def print_grid(lst, width):
+    for i in range(0, len(lst), width):
+        print(lst[i:i+width])
+
+
