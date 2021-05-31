@@ -12,10 +12,6 @@ def convert_list_to_2d_list(image, image_data):
     return grid
 
 
-def convert_2d_list_to_list(image):
-    return image.getdata()
-
-
 def footer(image, data, name_of_file):
     image.putdata(data)
     image.save(name_of_file + ".jpg")
@@ -49,3 +45,28 @@ def print_grid(lst, width):
         print(lst[i:i+width])
 
 
+def fill_list_indexes(length):
+    """Returns a list of indexes up to but not
+    including length
+    """
+    lst = []
+    for i in range(length):
+        lst.append(i)
+    
+    return lst
+
+
+def get_list_of_tuple_indexes(lst, n_dimension, width):
+    """Returns a list of items with items in their box form
+    """
+    lst = lst[:n_dimension]
+    list_of_indexes = []
+    for i in range(n_dimension):
+        current_list_indexes = lst[:n_dimension]
+        for j in range(len(current_list_indexes)):
+            list_of_indexes.append(current_list_indexes[j])
+        
+        for k in range(n_dimension):
+            lst[k] += width
+
+    return list_of_indexes

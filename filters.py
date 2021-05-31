@@ -121,12 +121,11 @@ def blur_modular_filter(image, n_dimension):
         if (n_dimension * n_dimension > length_of_image_data-1): break
 
         list_of_tuples = []
-        for j in range(i, i + n_dimension):
-            for k in range(i + width, i + width + n_dimension):
-                pass
-            # need to use width
-            # list_of_tuples.append(image_data[j])
+        index_grid = fill_list_indexes(length_of_image_data)
+        list_of_indexes = get_list_of_tuple_indexes(index_grid, n_dimension, width)
 
+        for j in range(len(list_of_indexes)):
+            list_of_tuples.append(image_data[list_of_indexes[j]])
 
         average_tuple = get_average_tuple(list_of_tuples)
         data.append(average_tuple)
