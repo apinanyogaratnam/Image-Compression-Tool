@@ -55,6 +55,7 @@ def fill_list_indexes(length):
     """Returns a list of indexes up to but not
     including length
     """
+
     lst = []
     for i in range(length):
         lst.append(i)
@@ -65,6 +66,7 @@ def fill_list_indexes(length):
 def get_list_of_tuple_indexes(lst, n_dimension, width):
     """Returns a list of items with items in their box form
     """
+    
     lst = lst[:n_dimension]
     list_of_indexes = []
     for i in range(n_dimension):

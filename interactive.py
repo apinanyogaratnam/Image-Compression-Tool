@@ -8,9 +8,4 @@ image = Image.open(filename)
 image = image.convert('RGB')
 
 
-n_dimension = 3
-
-
-blur_filter(image)
-
-
+luminosity(image, 80)

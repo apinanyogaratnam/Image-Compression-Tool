@@ -88,7 +88,7 @@ def reduce_opacity_filter(image, opacity_level):
     footer(image, data, "reduce_opacity_filter")
 
 
-def blur_filter(image):
+def blur_filter4x3(image):
     size_of_image = image.size
     width = size_of_image[0]
     image_data = get_image_data(image)
@@ -111,33 +111,28 @@ def blur_filter(image):
     # 4x4 caused brightness
 
 
-def blur_modular_filter(image, n_dimension):
-    size_of_image = image.size
-    width = size_of_image[0]
-    image_data = get_image_data(image)
-    length_of_image_data = len(image_data)
-
-    data = []
-    for i in range(length_of_image_data):
-        if (n_dimension * n_dimension > length_of_image_data): break
-
-        list_of_tuples = []
-        index_grid = fill_list_indexes(length_of_image_data)
-        list_of_indexes = get_list_of_tuple_indexes(index_grid, n_dimension, width)
-
-        for j in range(len(list_of_indexes)):
-            list_of_tuples.append(image_data[list_of_indexes[j]])
-
-        average_tuple = get_average_tuple(list_of_tuples)
-        data.append(average_tuple)
-
-    footer(image, data, "blur_alternate_filter")
-
-
 def blur_lib_filter(image, level_of_blur):
     """Blur an image depending on level_of_blur from 0 to 100
     """
+    
     image = image.filter(ImageFilter.GaussianBlur(level_of_blur))
     # image.filter(ImageFilter.BLUR)
 
     footer_without_data(image, "blurry_image_filter")
+
+
+def luminosity(image, level_of_luminosity):
+    """Filter increases or reduces luminosity depeneding on
+    level_of_luminosity
+    """
+
+    data = []
+    image_data = list(image.getdata())
+    for i in range(len(image_data)):
+        current_tuple = list(image_data[i])
+        current_tuple[0] += level_of_luminosity
+        current_tuple[1] += level_of_luminosity
+        current_tuple[2] += level_of_luminosity
+        data.append(tuple(current_tuple))
+    
+    footer(image, data, "blue_filter")
