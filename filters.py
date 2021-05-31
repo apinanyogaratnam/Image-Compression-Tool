@@ -88,10 +88,8 @@ def reduce_opacity_filter(image, opacity_level):
 
 
 def blur_filter(image):
-    # grid = convert_list_to_2d_list(image, image.getdata())
     size_of_image = image.size
     width = size_of_image[0]
-    height = size_of_image[1]
     image_data = list(image.getdata())
 
     data = []
@@ -106,4 +104,3 @@ def blur_filter(image):
         data.append(average_tuple)
 
     footer(image, data, "blur_filter")
-    
