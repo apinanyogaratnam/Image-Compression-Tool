@@ -95,11 +95,14 @@ def blur_filter(image):
     image_data = list(image.getdata())
 
     data = []
-    for i in range(len(image_data)-2):
-        # if (i+1 > len(image_data) or i+2 > len(image_data)): break
-
+    for i in range(len(image_data)):
         p1, p2, p3 = i, i+1, i+2
         p4, p5, p6 = p1 + width, p1 + width + 1, p1 + width + 2
         p7, p8, p9 = p4 + width, p4 + width + 1, p4 + width + 2
 
+        if (p9 > len(image_data)): break
+
         average_tuple = get_average_tuple([image_data[p1], image_data[p2], image_data[p3], image_data[p4], image_data[p5], image_data[p6], image_data[p7], image_data[p8], image_data[p9]])
+        data.append(average_tuple)
+
+    footer(image, data, "blur_filter")
