@@ -16,12 +16,8 @@ look applied to a sample image.
 ### 3. Follow the instructions for applying desired filters
 
 
-
-
-- need to make the blur function
-
 ## Libraries:
 #### https://github.com/nothings/stb.git
 
 
-organize files into a directory like automate_git project
+add comments to code

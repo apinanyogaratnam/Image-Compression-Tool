@@ -104,7 +104,7 @@ def blur_filter_3x3(image):
         average_tuple = get_average_tuple([image_data[p1], image_data[p2], image_data[p3], image_data[p4], image_data[p5], image_data[p6], image_data[p7], image_data[p8], image_data[p9]])
         data.append(average_tuple)
 
-    footer(image, data, "blur_filter")
+    footer(image, data, "blur_filter3x3")
 
 
 def blur_filter_4x3(image):
@@ -123,7 +123,7 @@ def blur_filter_4x3(image):
         average_tuple = get_average_tuple([image_data[p1], image_data[p2], image_data[p3], image_data[p4], image_data[p5], image_data[p6], image_data[p7], image_data[p8], image_data[p9], image_data[p10], image_data[p11], image_data[p12]])
         data.append(average_tuple)
 
-    footer(image, data, "blur_filter")
+    footer(image, data, "blur_filter4x3")
 
 # results:
     # 3x3: caused paleness
@@ -154,4 +154,28 @@ def luminosity(image, level_of_luminosity):
         current_tuple[2] += level_of_luminosity
         data.append(tuple(current_tuple))
     
-    footer(image, data, "blue_filter")
+    footer(image, data, "luminosity_filter")
+
+def contrast(image):
+    contrast_min = 0
+    contrast_max = 0
+
+    data = []
+    image_data = list(image.getdata())
+    for i in range(len(image_data)):
+        current_tuple = list(image_data[i])
+        avg = (current_tuple[0] + current_tuple[1] + current_tuple[2]) / 3
+        contrast_min = min(avg, contrast_min)
+        contrast_max = max(avg, contrast_max)
+    
+    for i in range(len(image_data)):
+        current_tuple = list(image_data[i])
+        avg = (current_tuple[0] + current_tuple[1] + current_tuple[2]) / 3
+
+        # new luminosity
+        new = 255 * (avg - contrast_min) / (contrast_max - contrast_min)
+        current_tuple[0] = int(current_tuple[0] * new / avg)
+        current_tuple[1] = int(current_tuple[1] * new / avg)
+        current_tuple[2] = int(current_tuple[2] * new / avg)
+    
+    footer(image, data, "luminosity_filter")
