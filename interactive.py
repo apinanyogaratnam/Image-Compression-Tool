@@ -7,9 +7,9 @@ image = Image.open(filename)
 image = image.convert('RGB')
 
 
-n_dimension = 5
+n_dimension = 3
 
-# print_grid(lst, width)
 
+blur_modular_filter(image, n_dimension)
 
 

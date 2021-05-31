@@ -118,7 +118,7 @@ def blur_modular_filter(image, n_dimension):
 
     data = []
     for i in range(length_of_image_data):
-        if (n_dimension * n_dimension > length_of_image_data-1): break
+        if (n_dimension * n_dimension > length_of_image_data): break
 
         list_of_tuples = []
         index_grid = fill_list_indexes(length_of_image_data)
