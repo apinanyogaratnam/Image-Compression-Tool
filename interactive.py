@@ -6,5 +6,7 @@ filename = "apishan.jpg"
 image = Image.open(filename)
 image = image.convert('RGB')
 
+origin = (130, 150)
+end = (400, 320)
 
-contrast(image)
+crop(image, origin, end)

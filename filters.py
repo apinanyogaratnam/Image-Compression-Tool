@@ -1,5 +1,5 @@
 from utilities import *
-from PIL import ImageFilter
+from PIL import Image, ImageFilter, ImageDraw
 
 
 def greyscale_filter(image):
@@ -173,7 +173,7 @@ def contrast(image):
         avg = (current_tuple[0] + current_tuple[1] + current_tuple[2]) / 3
 
         if (avg == 0): continue
-        
+
         # new luminosity
         new = 255 * (avg - contrast_min) / (contrast_max - contrast_min)
 
@@ -182,3 +182,24 @@ def contrast(image):
         current_tuple[2] = int(current_tuple[2] * new / avg)
     
     footer(image, data, "luminosity_filter")
+
+
+def crop(image, upper_left_coordinates, bottom_right_coordinates):
+    # Load image
+    pixels = image.load()
+
+    # Cropped coordinates
+    origin = upper_left_coordinates
+    end = bottom_right_coordinates
+
+    # Create a new cropped image
+    output_image = Image.new("RGB", (end[0] - origin[0], end[1] - origin[1]))
+    draw = ImageDraw.Draw(output_image)
+
+    # Copy pixels
+    for x in range(output_image.width):
+        for y in range(output_image.height):
+            x_pixel, y_pixel = x + origin[0], y + origin[1]
+            draw.point((x, y), pixels[x_pixel, y_pixel])
+
+    footer_without_data(output_image, "cropped_image")
