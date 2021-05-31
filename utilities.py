@@ -12,6 +12,12 @@ def convert_list_to_2d_list(image, image_data):
     return grid
 
 
+def footer_without_data(image, name_of_file):
+    image.save(name_of_file + ".jpg")
+    print("Image saved in " + name_of_file + ".jpg")
+    image.show()
+
+
 def footer(image, data, name_of_file):
     image.putdata(data)
     image.save(name_of_file + ".jpg")

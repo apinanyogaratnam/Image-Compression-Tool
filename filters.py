@@ -1,4 +1,5 @@
 from utilities import *
+from PIL import ImageFilter
 
 
 def greyscale_filter(image):
@@ -90,7 +91,7 @@ def reduce_opacity_filter(image, opacity_level):
 def blur_filter(image):
     size_of_image = image.size
     width = size_of_image[0]
-    image_data = get_iamge_data(image)
+    image_data = get_image_data(image)
 
     data = []
     for i in range(len(image_data)):
@@ -130,4 +131,13 @@ def blur_modular_filter(image, n_dimension):
         average_tuple = get_average_tuple(list_of_tuples)
         data.append(average_tuple)
 
-    footer(image, data, "blue_alternate_filter")
+    footer(image, data, "blur_alternate_filter")
+
+
+def blur_lib_filter(image, level_of_blur):
+    """Blur an image depending on level_of_blur from 0 to 100
+    """
+    image = image.filter(ImageFilter.GaussianBlur(level_of_blur))
+    # image.filter(ImageFilter.BLUR)
+
+    footer_without_data(image, "blurry_image_filter")
