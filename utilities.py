@@ -38,4 +38,3 @@ def get_average_tuple(list_of_tuples):
     avg_2 = sum_2 / 9
 
     return (round(avg_0), round(avg_1), round(avg_2))
-

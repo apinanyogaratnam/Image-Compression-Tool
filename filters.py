@@ -106,3 +106,4 @@ def blur_filter(image):
         data.append(average_tuple)
 
     footer(image, data, "blur_filter")
+    
