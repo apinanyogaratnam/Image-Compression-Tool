@@ -18,9 +18,7 @@ look applied to a sample image.
 
 
 
-- use sobel operators
-
-- this can convert png <=> jpg
+- need to make the blur function
 
 ## Libraries:
 #### https://github.com/nothings/stb.git

@@ -87,3 +87,7 @@ def reduce_opacity_filter(image, opacity_level):
     footer(image, data, "reduce_opacity_filter")
 
 
+def blur_filter(image):
+    grid = convert_list_to_2d_list(image, image.getdata())
+
+    
