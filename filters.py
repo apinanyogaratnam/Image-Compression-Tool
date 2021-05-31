@@ -100,7 +100,7 @@ def blur_filter(image):
         p4, p5, p6 = p1 + width, p1 + width + 1, p1 + width + 2
         p7, p8, p9 = p4 + width, p4 + width + 1, p4 + width + 2
 
-        if (p9 > len(image_data)): break
+        if (p9 > len(image_data)-1): break
 
         average_tuple = get_average_tuple([image_data[p1], image_data[p2], image_data[p3], image_data[p4], image_data[p5], image_data[p6], image_data[p7], image_data[p8], image_data[p9]])
         data.append(average_tuple)
