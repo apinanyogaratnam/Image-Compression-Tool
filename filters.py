@@ -89,5 +89,16 @@ def reduce_opacity_filter(image, opacity_level):
 
 def blur_filter(image):
     grid = convert_list_to_2d_list(image, image.getdata())
-
-    
+    size_of_image = image.size
+    width = size_of_image[0]
+    height = size_of_image[1]
+    image_data = list(image.getdata())
+    p1 = 0
+    p2 = 1
+    p3 = 2
+    p4 = p1 + width
+    p5 = p4+1
+    p6 = p4+2
+    p7 = p4 + width
+    p8 = p7 + 1
+    p9 = p7 + 2
