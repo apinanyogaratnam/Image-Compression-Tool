@@ -88,7 +88,26 @@ def reduce_opacity_filter(image, opacity_level):
     footer(image, data, "reduce_opacity_filter")
 
 
-def blur_filter4x3(image):
+def blur_filter_3x3(image):
+    size_of_image = image.size
+    width = size_of_image[0]
+    image_data = list(image.getdata())
+
+    data = []
+    for i in range(len(image_data)):
+        p1, p2, p3 = i, i+1, i+2
+        p4, p5, p6 = p1 + width, p1 + width + 1, p1 + width + 2
+        p7, p8, p9 = p4 + width, p4 + width + 1, p4 + width + 2
+
+        if (p9 > len(image_data)-1): break
+
+        average_tuple = get_average_tuple([image_data[p1], image_data[p2], image_data[p3], image_data[p4], image_data[p5], image_data[p6], image_data[p7], image_data[p8], image_data[p9]])
+        data.append(average_tuple)
+
+    footer(image, data, "blur_filter")
+
+
+def blur_filter_4x3(image):
     size_of_image = image.size
     width = size_of_image[0]
     image_data = get_image_data(image)
@@ -114,7 +133,7 @@ def blur_filter4x3(image):
 def blur_lib_filter(image, level_of_blur):
     """Blur an image depending on level_of_blur from 0 to 100
     """
-    
+
     image = image.filter(ImageFilter.GaussianBlur(level_of_blur))
     # image.filter(ImageFilter.BLUR)
 
