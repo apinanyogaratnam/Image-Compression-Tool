@@ -104,3 +104,7 @@ def blur_filter(image):
         data.append(average_tuple)
 
     footer(image, data, "blur_filter")
+
+# results:
+    # 3x3: caused paleness
+    # 4x4 caused brightness
