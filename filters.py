@@ -52,7 +52,7 @@ def blue_filter(image):
     footer(image, data, "blue_filter")
 
 
-def pink_filter(image):
+def dark_blue_filter(image):
     data = []
     image_data = list(image.getdata())
     for i in range(len(image_data)):
