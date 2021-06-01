@@ -6,4 +6,4 @@ filename = "apishan.jpg"
 image = Image.open(filename)
 image = image.convert('RGB')
 
-unsharpen_filter(image)
+edge_detection_filter(image)

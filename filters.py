@@ -1,5 +1,6 @@
 from utilities import *
 from PIL import Image, ImageFilter, ImageDraw
+from math import sqrt
 
 
 def greyscale_filter(image):
@@ -288,7 +289,7 @@ def sharpen_filter(image):
     footer_without_data(output_image, "sharpen_filter")
 
 
-def unsharpen_filter(image):
+def unsharpen_mask_filter(image):
     # Load image:
     pixels = image.load()
 
@@ -331,4 +332,42 @@ def unsharpen_filter(image):
             )
             draw.point((x, y), new_pixel)
         
-    footer_without_data(output_image, "unsharpen_filter")
+    footer_without_data(output_image, "unsharpen_mask_filter")
+
+
+def edge_detection_filter(image):
+    # Load image:
+    pixels = image.load()
+
+    # Calculate pixel intensity as the average of red, green and blue colors.
+    intensity = [[sum(pixels[x, y]) / 3 for y in range(image.height)] for x in range(image.width)]
+
+    # Sobel kernels
+    kernelx = [[-1, 0, 1],
+            [-2, 0, 2],
+            [-1, 0, 1]]
+    kernely = [[-1, -2, -1],
+            [0, 0, 0],
+            [1, 2, 1]]
+
+    # Create output image
+    output_image = Image.new("RGB", image.size)
+    draw = ImageDraw.Draw(output_image)
+
+    # Compute convolution between intensity and kernels
+    for x in range(1, image.width - 1):
+        for y in range(1, image.height - 1):
+            magx, magy = 0, 0
+            for i in range(3):
+                for j in range(3):
+                    xn = x + i - 1
+                    yn = y + j - 1
+                    magx += intensity[xn][yn] * kernelx[i][j]
+                    magy += intensity[xn][yn] * kernely[i][j]
+
+            # Draw in black and white the magnitude
+            color = int(sqrt(magx**2 + magy**2))
+            draw.point((x, y), (color, color, color))
+        
+    
+    footer_without_data(image, "edge_detection_filter")
