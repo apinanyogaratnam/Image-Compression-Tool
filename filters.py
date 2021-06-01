@@ -43,6 +43,7 @@ def greyscale_alternative_filter(image):
     
     footer(image, data, "greyscale_alternate_filter")
 
+
 def blue_filter(image):
     data = []
     image_data = list(image.getdata())
@@ -126,10 +127,6 @@ def blur_filter_4x3(image):
 
     footer(image, data, "blur_filter4x3")
 
-# results:
-    # 3x3: caused paleness
-    # 4x4 caused brightness
-
 
 def blur_lib_filter(image, level_of_blur):
     """Blur an image depending on level_of_blur from 0 to 100
@@ -141,7 +138,7 @@ def blur_lib_filter(image, level_of_blur):
     footer_without_data(image, "blurry_image_filter")
 
 
-def luminosity(image, level_of_luminosity):
+def luminosity_filter(image, level_of_luminosity):
     """Filter increases or reduces luminosity depeneding on
     level_of_luminosity
     """
@@ -157,7 +154,8 @@ def luminosity(image, level_of_luminosity):
     
     footer(image, data, "luminosity_filter")
 
-def contrast(image):
+
+def contrast_filter(image):
     contrast_min = 0
     contrast_max = 0
 
@@ -185,7 +183,7 @@ def contrast(image):
     footer(image, data, "luminosity_filter")
 
 
-def crop(image, upper_left_coordinates, bottom_right_coordinates):
+def crop_filter(image, upper_left_coordinates, bottom_right_coordinates):
     # Load image
     pixels = image.load()
 
@@ -204,8 +202,6 @@ def crop(image, upper_left_coordinates, bottom_right_coordinates):
             draw.point((x, y), pixels[x_pixel, y_pixel])
 
     footer_without_data(output_image, "cropped_image")
-
-# https://www.codingame.com/playgrounds/2524/basic-image-manipulation/filtering
 
 
 def blur_filter(image):
