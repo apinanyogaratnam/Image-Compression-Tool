@@ -26,10 +26,11 @@ print("16. Unsharpen mask filter")
 print("17. Edge detection filter")
 print("18. Exit program")
 
-selection = input("Enter a number to select an option: ")
 
 repeat = True
 while (repeat):
+    selection = input("Enter a number to select an option: ")
+    
     if (selection == 1):
         greyscale_filter(image)
         repeat = False
