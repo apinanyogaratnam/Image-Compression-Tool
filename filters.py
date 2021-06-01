@@ -369,5 +369,4 @@ def edge_detection_filter(image):
             color = int(sqrt(magx**2 + magy**2))
             draw.point((x, y), (color, color, color))
         
-    
-    footer_without_data(image, "edge_detection_filter")
+    footer_without_data(output_image, "edge_detection_filter")

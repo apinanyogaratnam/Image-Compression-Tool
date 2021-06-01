@@ -5,5 +5,3 @@ from filters import *
 filename = "apishan.jpg"
 image = Image.open(filename)
 image = image.convert('RGB')
-
-edge_detection_filter(image)
