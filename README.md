@@ -22,3 +22,4 @@ look applied to a sample image.
 
 add comments to code
 finish interactive with user choices
+optimize code

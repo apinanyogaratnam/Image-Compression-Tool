@@ -237,6 +237,84 @@ def blur_filter(image):
     for x in range(offset, image.width - offset):
         for y in range(offset, image.height - offset):
             acc = [0, 0, 0]
+            for i in range(len(kernel)):
+                for j in range(len(kernel)):
+                    xn = x + i - offset
+                    yn = y + j - offset
+                    pixel = pixels[xn, yn]
+                    acc[0] += pixel[0] * kernel[i][j]
+                    acc[1] += pixel[1] * kernel[i][j]
+                    acc[2] += pixel[2] * kernel[i][j]
+
+            draw.point((x, y), (int(acc[0]), int(acc[1]), int(acc[2])))
+        
+    footer_without_data(output_image, "blur_filter")
+
+
+def sharpen_filter(image):
+    # Load image:
+    pixels = image.load()
+
+    # High-pass kernel
+    sharpen_kernel = [[  0  , -.5 ,    0 ],
+            [-.5 ,   3  , -.5 ],
+            [  0  , -.5 ,    0 ]]
+
+    # select kernel
+    kernel = sharpen_kernel
+
+    # Middle of the kernel
+    offset = len(kernel) // 2
+
+    # Create output image
+    output_image = Image.new("RGB", image.size)
+    draw = ImageDraw.Draw(output_image)
+
+    # Compute convolution with kernel
+    for x in range(offset, image.width - offset):
+        for y in range(offset, image.height - offset):
+            acc = [0, 0, 0]
+            for i in range(len(kernel)):
+                for j in range(len(kernel)):
+                    xn = x + i - offset
+                    yn = y + j - offset
+                    pixel = pixels[xn, yn]
+                    acc[0] += pixel[0] * kernel[i][j]
+                    acc[1] += pixel[1] * kernel[i][j]
+                    acc[2] += pixel[2] * kernel[i][j]
+
+            draw.point((x, y), (int(acc[0]), int(acc[1]), int(acc[2])))
+        
+    footer_without_data(output_image, "sharpen_filter")
+
+
+def unsharpen_filter(image):
+    # Load image:
+    pixels = image.load()
+
+    # Low-pass kernel
+    unsharpen_kernel = [[1 / 9, 1 / 9, 1 / 9],
+            [1 / 9, 1 / 9, 1 / 9],
+            [1 / 9, 1 / 9, 1 / 9]]
+
+    amount = 2
+
+    # select kernel
+    kernel = unsharpen_kernel
+
+    # Middle of the kernel
+    offset = len(kernel) // 2
+
+
+    # Create output image
+    output_image = Image.new("RGB", image.size)
+    draw = ImageDraw.Draw(output_image)
+
+    # Compute convolution with kernel
+    for x in range(offset, image.width - offset):
+        for y in range(offset, image.height - offset):
+            original_pixel = pixels[x, y]
+            acc = [0, 0, 0]
             for a in range(len(kernel)):
                 for b in range(len(kernel)):
                     xn = x + a - offset
@@ -246,6 +324,11 @@ def blur_filter(image):
                     acc[1] += pixel[1] * kernel[a][b]
                     acc[2] += pixel[2] * kernel[a][b]
 
-            draw.point((x, y), (int(acc[0]), int(acc[1]), int(acc[2])))
+            new_pixel = (
+                int(original_pixel[0] + (original_pixel[0] - acc[0]) * amount),
+                int(original_pixel[1] + (original_pixel[1] - acc[1]) * amount),
+                int(original_pixel[2] + (original_pixel[2] - acc[2]) * amount)
+            )
+            draw.point((x, y), new_pixel)
         
-    footer_without_data(output_image, "blur_filter")
+    footer_without_data(output_image, "unsharpen_filter")
