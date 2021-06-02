@@ -29,5 +29,3 @@ look applied to a sample image. Images are saved as .jpg files
 
 ## Libraries:
 ### https://github.com/python-pillow/Pillow
-
-add license
