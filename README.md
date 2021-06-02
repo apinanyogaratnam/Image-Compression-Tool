@@ -4,7 +4,7 @@
 This tool can create filters for given images and works by taking an image and storing
 image pixels in an array allowing pixel manipulations to be made to allow filters. There
 is a folder called filter_previews which shows the different types of filter and how they
-look applied to a sample image.
+look applied to a sample image. Images are saved as .jpg files
 
 ### Supported image extensions:
 ### - jpg
@@ -33,3 +33,5 @@ look applied to a sample image.
 add comments to util
 update readme
 create sample images
+add docstrings
+allow user to select the .extension to save image as
