@@ -5,6 +5,9 @@ from filters import *
 
 # different options for user to select
 def print_options():
+    """Print out different options for the user to view in the shell
+    """
+    
     print("1. Greyscale filter")
     print("2. Green filter")
     print("3. Alternate greyscale filter")
