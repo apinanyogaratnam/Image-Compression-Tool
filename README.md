@@ -20,6 +20,7 @@ look applied to a sample image.
 ### - pcx
 ### - png 
 
+
 ## Instructions:
 ### 1. clone repository `https://github.com/apinanyogaratnam/Image-Compression-Tool.git`
 ### 2. unix: `./interactive` | windows: `interactive`
@@ -30,6 +31,6 @@ look applied to a sample image.
 #### https://github.com/nothings/stb.git
 
 
-add comments to code
-optimize code
 update readme
+create sample images
+make kernels as constants

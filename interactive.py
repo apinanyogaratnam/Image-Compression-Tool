@@ -118,8 +118,9 @@ while (repeat):
         sharpen_filter(image)
         repeat = False
     elif (selection == 16):
+        amount = input("Enter amount of unsharpenness from 1-10: ")
         print("Loading...", end="\r")
-        unsharpen_mask_filter(image)
+        unsharpen_mask_filter(image, amount)
         repeat = False
     elif (selection == 17):
         print("Loading...", end="\r")
