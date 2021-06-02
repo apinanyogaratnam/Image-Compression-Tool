@@ -3,6 +3,7 @@ from utilities import *
 from filters import *
 
 
+# different options for user to select
 def print_options():
     print("1. Greyscale filter")
     print("2. Green filter")
@@ -24,8 +25,10 @@ def print_options():
     print("18. Exit program")
 
 
+# error checking for correct selected input
 repeat = True
 while (repeat):
+    # error checking for correct file opened
     repeat_opening_image = True
     while(repeat_opening_image):
         try:
@@ -39,6 +42,7 @@ while (repeat):
 
     print_options()
 
+    # error checking for correct option selection
     repeat_selection = True
     while (repeat_selection):
         try:
@@ -48,6 +52,7 @@ while (repeat):
             print("Invalid input.")
             repeat_selection = True
     
+    # filter selection options
     if (selection == 1):
         print("Loading...", end="\r")
         greyscale_filter(image)

@@ -30,7 +30,6 @@ look applied to a sample image.
 ## Libraries:
 #### https://github.com/nothings/stb.git
 
-
+add comments to util
 update readme
 create sample images
-make kernels as constants
