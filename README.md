@@ -21,12 +21,13 @@ look applied to a sample image. Images are saved as .jpg files
 
 ## Instructions:
 ### 1. clone repository `https://github.com/apinanyogaratnam/Image-Compression-Tool.git`
-### 2. unix: `./interactive` | windows: `interactive`
-### 3. Follow the instructions for applying desired filters
+### 2. change directory to src
+### 3. `python3 interactive.py` or run interactive.py
+### 4. Place image to be processed in the main directory
+### 5. Follow the instructions for applying desired filters
 
 
 ## Libraries:
 #### https://github.com/nothings/stb.git
 
-update readme
-create sample images
+add license

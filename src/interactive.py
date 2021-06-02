@@ -36,7 +36,7 @@ while (repeat):
     while(repeat_opening_image):
         try:
             image_name = input("Enter the image file name with the extension: ")
-            image = Image.open(image_name)
+            image = Image.open("../" + image_name)
             image = image.convert('RGB')
             repeat_opening_image = False
         except:
