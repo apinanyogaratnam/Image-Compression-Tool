@@ -38,7 +38,15 @@ while (repeat):
             repeat_opening_image = True
 
     print_options()
-    selection = int(input("Enter a number to select an option: "))
+
+    repeat_selection = True
+    while (repeat_selection):
+        try:
+            selection = int(input("Enter a number to select an option: "))
+            repeat_selection = False
+        except:
+            print("Invalid input.")
+            repeat_selection = True
     
     if (selection == 1):
         greyscale_filter(image)
