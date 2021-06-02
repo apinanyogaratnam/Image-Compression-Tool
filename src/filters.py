@@ -45,7 +45,7 @@ def greyscale_filter(image):
 
     # applying greyscale formula for rbg pixels
     for i in range(len(image_data)):
-        current_tuple = get_image_data(image)
+        current_tuple = list(image_data[i])
         colour_sum = round(current_tuple[0]*0.3) + round(current_tuple[1]*0.59) + round(current_tuple[1]*0.11)
         current_tuple[0] = colour_sum
         current_tuple[1] = colour_sum
@@ -65,7 +65,7 @@ def green_filter(image):
 
     # applying greyscale formula for rbg pixels differently
     for i in range(len(image_data)):
-        current_tuple = get_image_data(image)
+        current_tuple = list(image_data[i])
         current_tuple[0] = round(current_tuple[0]*0.3)
         current_tuple[1] = round(current_tuple[1]*0.59)
         current_tuple[2]= round(current_tuple[1]*0.11)
@@ -84,7 +84,7 @@ def greyscale_alternative_filter(image):
 
     # averaging pixel and creating new average pixel
     for i in range(len(image_data)):
-        current_tuple = get_image_data(image)
+        current_tuple = list(image_data[i])
         avg = round(sum(current_tuple) / 3)
         current_tuple[0] = avg
         current_tuple[1] = avg

@@ -3,9 +3,8 @@ def footer_without_data(image, name_of_file):
     user's desired file extension
     """
 
-    # file_extension = get_validated_file_extension()
-    file_extension = ".jpg"
-    image.save("./expected_filter_results/" + name_of_file + file_extension)
+    file_extension = get_validated_file_extension()
+    image.save("../output_images/" + name_of_file + file_extension)
     print("Image saved in " + name_of_file + file_extension)
     image.show()
 
@@ -17,9 +16,8 @@ def footer(image, data, name_of_file):
     """
 
     image.putdata(data)
-    # file_extension = get_validated_file_extension()
-    file_extension = ".jpg"
-    image.save("./expected_filter_results/" + name_of_file + file_extension)
+    file_extension = get_validated_file_extension()
+    image.save("../output_images/" + name_of_file + file_extension)
     print("Image saved in " + name_of_file + file_extension)
     image.show()
 
