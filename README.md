@@ -32,5 +32,4 @@ look applied to a sample image. Images are saved as .jpg files
 
 update readme
 create sample images
-add docstrings
 allow user to select the .extension to save image as

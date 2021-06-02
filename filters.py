@@ -37,7 +37,7 @@ KERNELY = [[-1, -2, -1],
 
 # filter functions
 def greyscale_filter(image):
-    """
+    """Filter creates a new image with making the pixels into black and white pixels
     """
 
     data = []
@@ -57,7 +57,7 @@ def greyscale_filter(image):
 
 
 def green_filter(image):
-    """
+    """Filter rounds the pixels to a near green on the rgb scale
     """
     
     data = []
@@ -76,7 +76,7 @@ def green_filter(image):
 
 
 def greyscale_alternative_filter(image):
-    """
+    """Filter makes the image darker by averaging the rbg of each pixel
     """
     
     data = []
@@ -96,7 +96,8 @@ def greyscale_alternative_filter(image):
 
 
 def blue_filter(image):
-    """
+    """Filter reduces the level of red to make the pixels more 
+    bluish and greenish
     """
     
     data = []
@@ -113,7 +114,8 @@ def blue_filter(image):
 
 
 def dark_blue_filter(image):
-    """
+    """Filter reduces the green making the pixels more of red 
+    and blue causing a dark bluish colour
     """
     
     data = []
@@ -130,7 +132,7 @@ def dark_blue_filter(image):
 
 
 def yellow_filter(image):
-    """
+    """Filter reduces the blue causing the pixels to become more red and greenish
     """
     
     data = []
@@ -147,7 +149,8 @@ def yellow_filter(image):
 
 
 def reduce_opacity_filter(image, opacity_level):
-    """
+    """Filter divides each pixel by the specified amount
+    of opacity_level
     """
     
     data = []
@@ -166,7 +169,8 @@ def reduce_opacity_filter(image, opacity_level):
 
 
 def blur_filter_3x3(image):
-    """
+    """Filter takes the average of the nearest 3x3 pixels 
+    and sets the pixels as the average
     """
     
     # gathering image data
@@ -192,7 +196,8 @@ def blur_filter_3x3(image):
 
 
 def blur_filter_4x3(image):
-    """
+    """Filter takes the average of the nearest 4x3 pixels and 
+    sets the pixels as the average
     """
 
     # gathering image data
@@ -249,7 +254,8 @@ def luminosity_filter(image, level_of_luminosity):
 
 
 def contrast_filter(image):
-    """
+    """Filter creates an image based on the highest and lowest
+    contrast and applies a formula to set the pixels to create contrast
     """
     
     contrast_min = 0
@@ -284,7 +290,7 @@ def contrast_filter(image):
 
 
 def crop_filter(image, upper_left_coordinates, bottom_right_coordinates):
-    """
+    """Filter crops the image to make the image a different size
     """
     
     # Load image
@@ -309,7 +315,8 @@ def crop_filter(image, upper_left_coordinates, bottom_right_coordinates):
 
 
 def blur_filter(image):
-    """
+    """ Filter blurs the filter using a kernel and multiplying a matrix with 
+    another the unstandard matrix multiplaction way
     """
     
     # Load image:
@@ -345,7 +352,8 @@ def blur_filter(image):
 
 
 def sharpen_filter(image):
-    """
+    """Filter sharpens the image using a kernel with
+    matrix multiplication the unstandard way
     """
     
     # Load image:
@@ -381,7 +389,8 @@ def sharpen_filter(image):
 
 
 def unsharpen_mask_filter(image, amount):
-    """
+    """Filter multiplies with a kernel to create an unsharpen mask 
+    effect
     """
     
     # Load image:
@@ -423,7 +432,8 @@ def unsharpen_mask_filter(image, amount):
 
 
 def edge_detection_filter(image):
-    """
+    """Filter uses a kernel and does matrix multiplication to 
+    detect the edges
     """
     
     # Load image:
