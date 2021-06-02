@@ -9,6 +9,16 @@ look applied to a sample image.
 ### Supported image extensions:
 ### - jpg
 ### - png
+### - icns
+### - ico
+### - im
+### - jpg
+### - j2p
+### - jpx
+### - j2x
+### - msp
+### - pcx
+### - png 
 
 ## Instructions:
 ### 1. clone repository `https://github.com/apinanyogaratnam/Image-Compression-Tool.git`
@@ -21,5 +31,5 @@ look applied to a sample image.
 
 
 add comments to code
-finish interactive with user choices
 optimize code
+update readme

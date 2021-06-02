@@ -49,42 +49,54 @@ while (repeat):
             repeat_selection = True
     
     if (selection == 1):
+        print("Loading...", end="\r")
         greyscale_filter(image)
         repeat = False
     elif (selection == 2):
+        print("Loading...", end="\r")
         green_filter(image)
         repeat = False
     elif (selection == 3):
+        print("Loading...", end="\r")
         greyscale_alternative_filter(image)
         repeat = False
     elif (selection == 4):
+        print("Loading...", end="\r")
         blue_filter(image)
         repeat = False
     elif (selection == 5):
+        print("Loading...", end="\r")
         dark_blue_filter(image)
         repeat = False
     elif (selection == 6):
+        print("Loading...", end="\r")
         yellow_filter(image)
         repeat = False
     elif (selection == 7):
+        print("Loading...", end="\r")
         level_of_opacity = input("Level of opacity: ")
         reduce_opacity_filter(image, level_of_opacity)
         repeat = False
     elif (selection == 8):
+        print("Loading...", end="\r")
         blur_filter_3x3(image)
         repeat = False
     elif (selection == 9):
+        print("Loading...", end="\r")
         blur_filter_4x3(image)
         repeat = False
     elif (selection == 10):
         level_of_blur = input("Enter level of blur from 1-100: ")
+        print("Loading...", end="\r")
         blur_lib_filter(image, level_of_blur)
         repeat = False
     elif (selection == 11):
         level_of_luminosity = input("Level of luminosity: ")
+        print("Loading...", end="\r")
         luminosity_filter(image, level_of_luminosity)
         repeat = False
     elif (selection == 12):
+        print("Loading...", end="\r")
         contrast_filter(image)
         repeat = False
     elif (selection == 13):
@@ -94,18 +106,23 @@ while (repeat):
         x = input("Enter lower x-coordinate: ")
         y = input("Enter lower y-coordinate: ")
         bottom_right_coordinates = (x, y)
+        print("Loading...", end="\r")
         crop_filter(image, upper_left_coordinates, bottom_right_coordinates)
         repeat = False
     elif (selection == 14):
+        print("Loading...", end="\r")
         blur_filter(image)
         repeat = False
     elif (selection == 15):
+        print("Loading...", end="\r")
         sharpen_filter(image)
         repeat = False
     elif (selection == 16):
+        print("Loading...", end="\r")
         unsharpen_mask_filter(image)
         repeat = False
     elif (selection == 17):
+        print("Loading...", end="\r")
         edge_detection_filter(image)
         repeat = False
     elif (selection == 18):
@@ -114,4 +131,3 @@ while (repeat):
     else:
         print("Invalid option.")
         repeat = True
-
