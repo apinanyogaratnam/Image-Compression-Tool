@@ -37,6 +37,9 @@ KERNELY = [[-1, -2, -1],
 
 # filter functions
 def greyscale_filter(image):
+    """
+    """
+
     data = []
     image_data = get_image_data(image)
 
@@ -54,6 +57,9 @@ def greyscale_filter(image):
 
 
 def green_filter(image):
+    """
+    """
+    
     data = []
     image_data = get_image_data(image)
 
@@ -70,6 +76,9 @@ def green_filter(image):
 
 
 def greyscale_alternative_filter(image):
+    """
+    """
+    
     data = []
     image_data = get_image_data(image)
 
@@ -87,6 +96,9 @@ def greyscale_alternative_filter(image):
 
 
 def blue_filter(image):
+    """
+    """
+    
     data = []
     image_data = get_image_data(image)
 
@@ -101,6 +113,9 @@ def blue_filter(image):
 
 
 def dark_blue_filter(image):
+    """
+    """
+    
     data = []
     image_data = get_image_data(image)
 
@@ -115,6 +130,9 @@ def dark_blue_filter(image):
 
 
 def yellow_filter(image):
+    """
+    """
+    
     data = []
     image_data = get_image_data(image)
 
@@ -129,6 +147,9 @@ def yellow_filter(image):
 
 
 def reduce_opacity_filter(image, opacity_level):
+    """
+    """
+    
     data = []
     image_data = get_image_data(image)
 
@@ -145,6 +166,9 @@ def reduce_opacity_filter(image, opacity_level):
 
 
 def blur_filter_3x3(image):
+    """
+    """
+    
     # gathering image data
     size_of_image = image.size
     width = size_of_image[0]
@@ -168,6 +192,9 @@ def blur_filter_3x3(image):
 
 
 def blur_filter_4x3(image):
+    """
+    """
+
     # gathering image data
     size_of_image = image.size
     width = size_of_image[0]
@@ -222,6 +249,9 @@ def luminosity_filter(image, level_of_luminosity):
 
 
 def contrast_filter(image):
+    """
+    """
+    
     contrast_min = 0
     contrast_max = 0
 
@@ -254,6 +284,9 @@ def contrast_filter(image):
 
 
 def crop_filter(image, upper_left_coordinates, bottom_right_coordinates):
+    """
+    """
+    
     # Load image
     pixels = image.load()
 
@@ -276,6 +309,9 @@ def crop_filter(image, upper_left_coordinates, bottom_right_coordinates):
 
 
 def blur_filter(image):
+    """
+    """
+    
     # Load image:
     pixels = image.load()
 
@@ -309,6 +345,9 @@ def blur_filter(image):
 
 
 def sharpen_filter(image):
+    """
+    """
+    
     # Load image:
     pixels = image.load()
 
@@ -342,6 +381,9 @@ def sharpen_filter(image):
 
 
 def unsharpen_mask_filter(image, amount):
+    """
+    """
+    
     # Load image:
     pixels = image.load()
 
@@ -381,6 +423,9 @@ def unsharpen_mask_filter(image, amount):
 
 
 def edge_detection_filter(image):
+    """
+    """
+    
     # Load image:
     pixels = image.load()
 
