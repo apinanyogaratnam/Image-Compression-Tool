@@ -29,7 +29,9 @@ print("18. Exit program")
 
 repeat = True
 while (repeat):
-    selection = input("Enter a number to select an option: ")
+    image_name = input("Enter the image file name with the extension: ")
+    image = Image.open(image_name)
+    selection = int(input("Enter a number to select an option: "))
     
     if (selection == 1):
         greyscale_filter(image)
