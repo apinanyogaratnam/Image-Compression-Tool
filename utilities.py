@@ -1,22 +1,59 @@
 def footer_without_data(image, name_of_file):
     """Saves an image with the given name_of_file and saves it as 
-    a .jpg file
+    user's desired file extension
     """
 
-    image.save(name_of_file + ".jpg")
-    print("Image saved in " + name_of_file + ".jpg")
+    file_extension = get_validated_file_extension()
+    image.save(name_of_file + file_extension)
+    print("Image saved in " + name_of_file + file_extension)
     image.show()
 
 
 def footer(image, data, name_of_file):
     """Saves an image with the given name_of_file and saves it as 
-    a .jpg file using data as the data as the newly formed pixels
+    the user's desired file extension using data as the data as the newly 
+    formed pixels
     """
 
     image.putdata(data)
-    image.save(name_of_file + ".jpg")
-    print("Image saved in " + name_of_file + ".jpg")
+    file_extension = get_validated_file_extension()
+    image.save(name_of_file + file_extension)
+    print("Image saved in " + name_of_file + file_extension)
     image.show()
+
+
+def get_validated_file_extension():
+    """Returns a string of a image file extension. Standard file is .jpg
+    """
+
+    file_extension = ".jpg"
+    repeat = True
+    while (repeat):
+        file_extension = input("Enter the file extension to save as (e.g.: .jpg): ")
+        file_extension = file_extension.lower()
+
+        if ("." not in file_extension):
+            repeat = True
+        elif (not is_valid_file_extension(file_extension)):
+            repeat = True
+        else:
+            repeat = False
+
+    return file_extension
+
+
+def is_valid_file_extension(file_extension):
+    """Returns True if and only file_extension is a supported
+    file extension
+    """
+
+    is_true = (file_extension == ".jpg" or file_extension == ".png" 
+    or file_extension == ".icns" or file_extension == ".j2p" 
+    or file_extension == ".ico" or file_extension == ".j2x" 
+    or file_extension == ".im" or file_extension == ".msp" 
+    or file_extension == ".jpx" or file_extension == ".pcx")
+
+    return is_true
 
 
 def get_average_tuple(list_of_tuples):

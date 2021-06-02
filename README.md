@@ -12,13 +12,11 @@ look applied to a sample image. Images are saved as .jpg files
 ### - icns
 ### - ico
 ### - im
-### - jpg
 ### - j2p
 ### - jpx
 ### - j2x
 ### - msp
 ### - pcx
-### - png 
 
 
 ## Instructions:
@@ -32,4 +30,3 @@ look applied to a sample image. Images are saved as .jpg files
 
 update readme
 create sample images
-allow user to select the .extension to save image as
