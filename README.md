@@ -6,6 +6,9 @@ image pixels in an array allowing pixel manipulations to be made to allow filter
 is a folder called filter_previews which shows the different types of filter and how they
 look applied to a sample image. Images are saved as .jpg files
 
+Examples:
+![example image1](expected_filter_results/blue_filter.jpg)
+
 ### Supported image extensions:
 ### - jpg
 ### - png
