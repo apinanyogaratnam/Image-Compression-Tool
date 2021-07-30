@@ -54,7 +54,7 @@ Examples:
 
 
 ## Instructions:
-### 1. clone repository `https://github.com/apinanyogaratnam/Image-Compression-Tool.git`
+### 1. clone repository: `git clone https://github.com/apinanyogaratnam/Image-Compression-Tool.git`
 ### 2. change directory to src
 ### 3. unix: `python3 interactive.py` | windows: `python interactive.py` | or run interactive.py
 ### 4. Place image to be processed in the main directory
